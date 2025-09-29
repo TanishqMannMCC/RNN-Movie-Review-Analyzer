@@ -33,6 +33,16 @@ The application will open automatically in your browser, allowing you to paste i
 🧠 Model Architecture
 The final, production-ready model utilizes a Bi-LSTM architecture, which processes the text sequence in both forward and backward directions, greatly improving its ability to handle negation and capture long-range dependencies.
 
+Model Parameters:
+
+max_words (Vocabulary Size): 10,000
+
+maxlen (Padded Sequence Length): 200
+
+embedding_dim: 128
+
+lstm_units: 64 (Bidirectional)
+
 Layer (type)
 
 Output Shape
@@ -43,13 +53,13 @@ Embedding
 
 (None, 200, 128)
 
-[FILL ME: Embedding Parameter Count]
+1,280,000
 
 Bidirectional (LSTM)
 
 (None, 128)
 
-[FILL ME: BiLSTM Parameter Count]
+82,944
 
 Dropout
 
@@ -65,12 +75,12 @@ Dense
 
 Total Params
 
-[FILL ME: Total Parameter Count]
+1,363,073
 
 
 
 📊 Results and Performance
-The model was trained on the IMDb Movie Review Dataset (25,000 training samples, 25,000 test samples).
+The model was trained on the IMDb Movie Review Dataset (25,000 training samples, 25,000 test samples). Training was halted early using Early Stopping (patience=3) to prevent overfitting.
 
 Metric
 
@@ -78,26 +88,21 @@ Score
 
 Test Accuracy
 
-[FILL ME: e.g., 89.5% / 0.895]
+84.89%
 
 F1-Score (Positive)
 
-[FILL ME: e.g., 0.89]
+0.85
 
 F1-Score (Negative)
 
-[FILL ME: e.g., 0.90]
+0.85
 
 Training Epochs
 
-[FILL ME: Number of epochs run until Early Stopping]
+4 (Stopped at Epoch 4 due to Early Stopping)
 
 Visualizations
-[Embed the image of your Training & Validation Accuracy/Loss Plot here]
-
-Note: The training history plot above confirms that the model was trained efficiently without significant signs of early overfitting, thanks to the use of Early Stopping and Dropout layers.
-
-[Embed the image of your Confusion Matrix here]
+Note: The training history plot above confirms that the model showed slight overfitting starting around Epoch 2 (where validation loss began to rise while training loss continued to drop), validating the use of the Early Stopping callback.
 
 Note: The Confusion Matrix shows the number of True Positives, True Negatives, False Positives, and False Negatives, detailing the model's error distribution.
-
